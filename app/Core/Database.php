@@ -19,13 +19,13 @@ class Database
         ]);
     }
 
-    public function execute(string $query, array $params = []): void
+    public function execute(string $query, array $params = []): self
     {
         $this->statement = $this->connection->prepare($query);
 
         $this->statement->execute($params);
 
-        $this;
+        return $this;
     }
 
     public function get(): array
